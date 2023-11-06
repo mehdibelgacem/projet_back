@@ -4,7 +4,11 @@ const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose(); // Include the SQLite library
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: ['http://65.20.102.228:3000'], // Replace with your frontend's URL
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 8084;
