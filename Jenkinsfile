@@ -3,7 +3,7 @@ pipeline {
     triggers { pollSCM('*/5 * * * *') // Vérifier toutes les 5 minutes
     }
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dh_cred')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub_cred')
 
     }
     stages {
@@ -13,7 +13,7 @@ pipeline {
                 // Remove the existing directory, if it exists
                 sh 'rm -rf projet_back'
                 // Replace with the actual URL of your Git repository and the branch you want to check out
-                sh 'git clone -b main https://github.com/azizz98/projet_back.git'
+                sh 'ghttps://github.com/mehdibelgacem/projet_back'
             }
         }
         stage('Init'){
@@ -24,17 +24,17 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'ls'
-                sh 'docker build -t aziztn/projet_back:$BUILD_ID projet_back/. '
+                sh 'docker build -t mehdibelgacem/projet_back:$BUILD_ID projet_back/. '
             }
         }
         stage('Deliver'){
             steps {
-                sh 'docker push aziztn/projet_back:$BUILD_ID'
+                sh 'docker push mehdibelgacem/projet_back:$BUILD_ID'
             }
         }
         stage('Cleanup'){
             steps {
-                sh 'docker rmi aziztn/projet_back:$BUILD_ID'
+                sh 'docker rmi mehdibelgacem/projet_back:$BUILD_ID'
                 sh 'docker logout'
             }
         }
