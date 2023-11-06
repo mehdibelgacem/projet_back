@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: projet-back-deployment
+  name: backapp-deployment
+  labels:
+    app: backapp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: projetback
+      app: backapp
   template:
     metadata:
       labels:
-        app: projetback
+        app: backapp
     spec:
       containers:
-      - name: projetback
+      - name: backapp
+        image: aziztn/projet_back
         ports:
         - containerPort: 80
-
