@@ -23,7 +23,8 @@ pipeline {
         }
         stage('Build'){
             steps {
-                sh 'docker build -t aziztn/projet_back:$BUILD_ID .'
+                sh 'ls'
+                sh 'docker build -t aziztn/projet_back:$BUILD_ID projet_back/. '
             }
         }
         stage('Deliver'){
