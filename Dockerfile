@@ -18,3 +18,10 @@ EXPOSE 8084
 
 # Start the application when the container runs
 CMD ["node", "app.js"]
+
+
+# to build docker container 
+# docker build -t app .
+
+# to run docker container 
+# docker run -p 8084:8084 app
